@@ -35,6 +35,7 @@
 #include <tiny-cuda-nn/encodings/grid.h>
 #include <tiny-cuda-nn/encodings/identity.h>
 #include <tiny-cuda-nn/encodings/oneblob.h>
+#include <tiny-cuda-nn/encodings/random_fourier_features.h>
 #include <tiny-cuda-nn/encodings/spherical_harmonics.h>
 #include <tiny-cuda-nn/encodings/triangle_wave.h>
 
@@ -64,6 +65,15 @@ auto register_builtin_encodings() {
 
 	register_encoding<T>(factories, "Frequency", [](uint32_t n_dims_to_encode, const json& encoding) {
 		return new FrequencyEncoding<T>{encoding.value("n_frequencies", 12u), n_dims_to_encode};
+	});
+
+	register_encoding<T>(factories, "RandomFourierFeatures", [](uint32_t n_dims_to_encode, const json& encoding) {
+		return new RandomFourierFeaturesEncoding<T>{
+			encoding.value("n_features", 128u),
+			n_dims_to_encode,
+			encoding.value("scale", 10.0f),
+			encoding.value("seed", 1337u)
+		};
 	});
 
 	auto grid_factory = [](uint32_t n_dims_to_encode, const json& encoding) {

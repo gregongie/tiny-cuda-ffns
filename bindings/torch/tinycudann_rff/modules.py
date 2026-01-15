@@ -54,7 +54,7 @@ for cc in reversed(ALL_COMPUTE_CAPABILITIES):
 		continue
 
 	try:
-		_C = importlib.import_module(f"tinycudann_bindings._{cc}_C")
+		_C = importlib.import_module(f"tinycudann_rff_bindings._{cc}_C")
 		if cc != system_compute_capability:
 			warnings.warn(f"tinycudann was built for lower compute capability ({cc}) than the system's ({system_compute_capability}). Performance may be suboptimal.")
 		break

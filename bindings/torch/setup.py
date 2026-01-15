@@ -159,7 +159,7 @@ else:
 base_definitions.append(f"-DTCNN_HALF_PRECISION={int(enable_half)}")
 
 base_source_files = [
-	"tinycudann/bindings.cpp",
+	"tinycudann_rff/bindings.cpp",
 	"../../dependencies/fmt/src/format.cc",
 	"../../dependencies/fmt/src/os.cc",
 	"../../src/cpp_api.cu",
@@ -178,7 +178,7 @@ else:
 	base_definitions.append("-DTCNN_NO_NETWORKS")
 
 # Copy headers required by RTC at runtime
-rtc_dir = os.path.join(bindings_dir, "tinycudann", "rtc")
+rtc_dir = os.path.join(bindings_dir, "tinycudann_rff", "rtc")
 rtc_include_dir = os.path.join(rtc_dir, "include")
 rtc_cache_dir = os.path.join(rtc_dir, "cache")
 shutil.rmtree(rtc_dir, ignore_errors=True)
@@ -220,7 +220,7 @@ def make_extension(compute_capability):
 	cflags = base_cflags + definitions
 
 	ext = CUDAExtension(
-		name=f"tinycudann_bindings._{compute_capability}_C",
+		name=f"tinycudann_rff_bindings._{compute_capability}_C",
 		sources=source_files,
 		include_dirs=[
 			f"{root_dir}/include",
@@ -244,7 +244,7 @@ def package_files(directory):
 	return paths
 
 setup(
-	name="tinycudann",
+	name="tinycudann_rff",
 	version=VERSION,
 	description="tiny-cuda-nn extension for PyTorch",
 	long_description="tiny-cuda-nn extension for PyTorch",
@@ -267,7 +267,7 @@ setup(
 	maintainer_email="tmueller@nvidia.com",
 	download_url=f"https://github.com/nvlabs/tiny-cuda-nn",
 	license="BSD 3-Clause \"New\" or \"Revised\" License",
-	packages=["tinycudann"],
+	packages=["tinycudann_rff"],
 	package_data={"": package_files(rtc_dir)},
 	install_requires=[],
 	include_package_data=True,
