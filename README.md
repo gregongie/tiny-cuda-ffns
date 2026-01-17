@@ -88,9 +88,9 @@ y = model(x)  # shape: (1024, 1)
 - PyTorch with CUDA support
 - C++17 compatible compiler
 
-### Install as `tinycudann_rff`
+### Installation
 
-This installs alongside any existing `tinycudann` installation:
+The package installs as `tinycudann_rff`, so as not to overwrite an existing `tinycudann` installation. To install, use the following commands:
 
 ```bash
 # Clone and enter the repository
@@ -110,8 +110,7 @@ python test_random_fourier_features.py
 ### Import
 
 ```python
-import tinycudann_rff as tcnn  # This fork
-import tinycudann              # Original (if installed)
+import tinycudann_rff as tcnn
 ```
 
 ## Notes
@@ -120,3 +119,6 @@ import tinycudann              # Original (if installed)
 - **Scale parameter**: Higher values = higher frequency content = more detail but potentially harder to optimize
 - **Large n_features**: No hard limit, but very large values may slow JIT compilation. For >64 features (>128 output dims), consider using `CutlassMLP` instead of `FullyFusedMLP`
 - **Precision**: Encoding supports runtime dtype selection (`torch.float32` or `torch.float16`). Networks use compile-time precision (set `TCNN_HALF_PRECISION=0` or `1` before `pip install`)
+
+## AI Disclosure
+This repo was generated with assistance from Claude Code.
