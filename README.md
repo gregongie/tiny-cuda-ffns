@@ -1,4 +1,5 @@
-# Tiny-CUDA-NN with Random Fourier Features Encoding
+# tiny-cuda-nn-rff
+Tiny-CUDA-NN with additional Random Fourier Features Encoding
 
 This fork of [tiny-cuda-nn](https://github.com/NVlabs/tiny-cuda-nn) adds a new encoding type `RandomFourierFeatures` that implements random Fourier features [Rahimi & Recht (2007)](https://papers.nips.cc/paper/2007/hash/013a006f03dbc5392effeb8f18fda755-Abstract.html). This encoding was proposed in [Tancik et al. (2020)](https://arxiv.org/abs/2006.10739) as a swap-in replacement for the positional encoding used in the original NeRF paper [Mildenhall et al. (2021)](https://dl.acm.org/doi/abs/10.1145/3503250)
 
@@ -94,8 +95,8 @@ The package installs as `tinycudann_rff`, so as not to overwrite an existing `ti
 
 ```bash
 # Clone and enter the repository
-git clone <repo-url> tiny-cuda-ffns
-cd tiny-cuda-ffns
+git clone https://github.com/gregongie/tiny-cuda-nn-rff.git
+cd tiny-cuda-nn-rff
 git submodule update --init --recursive
 
 # Install PyTorch bindings
@@ -120,5 +121,6 @@ import tinycudann_rff as tcnn
 - **Large n_features**: No hard limit, but very large values may slow JIT compilation. For >64 features (>128 output dims), consider using `CutlassMLP` instead of `FullyFusedMLP`
 - **Precision**: Encoding supports runtime dtype selection (`torch.float32` or `torch.float16`). Networks use compile-time precision (set `TCNN_HALF_PRECISION=0` or `1` before `pip install`)
 
-## AI Disclosure
+## Gen AI Disclosure
+
 This repo was generated with assistance from Claude Code.
