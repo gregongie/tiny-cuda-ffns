@@ -1,6 +1,6 @@
-# Random Fourier Features Encoding
+# Tiny-CUDA-NN with Random Fourier Features Encoding
 
-This fork adds a new encoding type `RandomFourierFeatures` that implements random Fourier features [Rahimi & Recht (2007)](https://papers.nips.cc/paper/2007/hash/013a006f03dbc5392effeb8f18fda755-Abstract.html). This encoding was proposed in [Tancik et al. (2020)](https://arxiv.org/abs/2006.10739) as a swap-in replacement for the positional encoding used in the original NeRF paper [Mildenhall et al. (2021)](https://dl.acm.org/doi/abs/10.1145/3503250)
+This fork of [tiny-cuda-nn](https://github.com/NVlabs/tiny-cuda-nn) adds a new encoding type `RandomFourierFeatures` that implements random Fourier features [Rahimi & Recht (2007)](https://papers.nips.cc/paper/2007/hash/013a006f03dbc5392effeb8f18fda755-Abstract.html). This encoding was proposed in [Tancik et al. (2020)](https://arxiv.org/abs/2006.10739) as a swap-in replacement for the positional encoding used in the original NeRF paper [Mildenhall et al. (2021)](https://dl.acm.org/doi/abs/10.1145/3503250)
 
 ## Mathematical Background
 
